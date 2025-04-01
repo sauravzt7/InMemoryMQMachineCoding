@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Subscriber implements ISubscriber {
-    private String id;
-    private int batchSize;
+    private final String id;
+    private final int batchSize;
 
     public Subscriber(String id, int batchSize) {
         this.id = id;

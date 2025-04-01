@@ -10,9 +10,6 @@ public class MessageQueue implements IMessageQueue {
     private Node tail;
     private int size;
 
-
-
-
     public MessageQueue() {
         this.head = null;
         this.tail = null;

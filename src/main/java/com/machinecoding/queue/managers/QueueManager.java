@@ -1,6 +1,5 @@
 package com.machinecoding.queue.managers;
-
-import com.machinecoding.queue.IMessageQueue;
+import com.machinecoding.factories.MessageQueueFactory;
 import com.machinecoding.queue.MessageQueue;
 
 import java.util.HashMap;
@@ -8,7 +7,7 @@ import java.util.Map;
 
 public class QueueManager implements IQueueManager {
 
-    private final Map<String, MessageQueue> queuesMap;
+    private final Map<String, MessageQueue> queuesMap; // {queueName: MessageQueue}
 
     public QueueManager() {
         this.queuesMap = new HashMap<>();
@@ -18,7 +17,7 @@ public class QueueManager implements IQueueManager {
     @Override
     public void createQueue(String queueName) {
         if(!queuesMap.containsKey(queueName)) {
-            queuesMap.put(queueName, new MessageQueue());
+            queuesMap.put(queueName, MessageQueueFactory.createQueue());
         }
         else {
             throw new RuntimeException("Queue already exists: " + queueName);
