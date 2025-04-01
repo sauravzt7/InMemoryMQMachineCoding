@@ -64,10 +64,15 @@ public class Dispatcher implements IDispatcher {
                 if (success) {
                     System.out.println("Subscriber " + subscriber.getId() + " processed batch successfully.");
                 } else {
+                    IRetryPolicy retryPolicy = subscriber.getRetryPolicy();
+                    // Implement retry logic based on the retry policy
+                    retryPolicy.shouldRetry(3);
                     System.out.println("Subscriber " + subscriber.getId() + " failed to process batch.");
                 }
 
                 // if success is false, we can choose to requeue the messages or handle them differently
+
+
 
             }
         }
@@ -75,10 +80,6 @@ public class Dispatcher implements IDispatcher {
 
     }
 
-    @Override
-    public void setRetryPolicy() {
-        //this.retryPolicy
-    }
 
 
 
